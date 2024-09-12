@@ -38,3 +38,8 @@ h1 {
     padding: 5px;
     border-radius: 5px;
 }
+
+.pakastin-item:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
