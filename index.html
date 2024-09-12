@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lassin pakastin</title>
+
+    <meta name="htmx-config" content='{"selfRequestsOnly": false}' />
+
+    <script src="htmx.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div hx-get="https://lumihanki.net/pakastin/index.php" hx-trigger="load" hx-target="this" id="pakastin-lista">
+        Fetching pakastin...
+    </div>
+
+    <form hx-get="https://lumihanki.net/pakastin/change.php" hx-target="#pakastin-lista" id="pakastin-form">
+        <label for="name">Kuka olet:</label>
+        <input id="name" name="name" required>
+        <label for="index">Mitä tavaraa tahdot muokata:</label>
+        <input id="item" name="item" required>
+        <label for="amount">Kuinka paljon:</label>
+        <input id="amount" name="amount" required type="number">
+        <label for="password">Pakastimen salasana:</label>
+        <input id="password" name="key" required>
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+
+</html>

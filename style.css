@@ -1,0 +1,10 @@
+#pakastin-lista,
+#pakastin-form {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding: 10px;
+    margin: 10px;
+    border: 5px outset black;
+    border-radius: 10px;
+}
