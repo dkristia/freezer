@@ -10,7 +10,7 @@ if (!$conn || !array_key_exists("key",$_GET)) {
 	exit;
 }
 /** @psalm-suppress MixedArgument */
-$hash = base64_encode(hash("sha256", htmlspecialchars($_GET["key"]), true));
+$hash = hash("sha256", htmlspecialchars($_GET["key"]));
 /** @psalm-suppress MixedAssignment */
 $hash1 = pg_escape_literal($hash);
 $access = pg_query($conn, "select * from access where \"key\"=$hash1;");
