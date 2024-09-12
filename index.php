@@ -25,7 +25,7 @@ while ($owner = pg_fetch_row($owners)) {
 	$ownerid = pg_escape_literal($owner[0]);
 	$belongings = @pg_query($conn, "select amount,item from manifest where owner=$ownerid order by amount desc;");
 	while ($stuff = pg_fetch_row($belongings)) {
-		echo "<li class='pakastin-item'>$stuff[0]x $stuff[1]</li>";
+		echo "<li class='pakastin-item' amount='$stuff[0]' item-name='$stuff[1]'>$stuff[0]x $stuff[1]</li>";
 	}
 	echo "</ul></li>";
 }
