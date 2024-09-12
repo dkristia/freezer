@@ -5,28 +5,39 @@
     <title>Lassin pakastin</title>
 
     <meta name="htmx-config" content='{"selfRequestsOnly": false}' />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="htmx.min.js"></script>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://lumihanki.net/styles.css">
 </head>
 
 <body>
-    <div hx-get="https://lumihanki.net/pakastin/index.php" hx-trigger="load" hx-target="this" id="pakastin-lista">
-        Fetching pakastin...
-    </div>
+    <h1>Lassin pakastin</h1>
+    <div class="post-it-container">
+        <div hx-get="https://lumihanki.net/pakastin/index.php" hx-trigger="load" hx-target="this" id="pakastin-lista"
+            class="post-it">
+            Fetching pakastin...
+        </div>
 
-    <form hx-get="https://lumihanki.net/pakastin/change.php" hx-target="#pakastin-lista" id="pakastin-form">
-        <label for="name">Kuka olet:</label>
-        <input id="name" name="name" required>
-        <label for="index">Mitä tavaraa tahdot muokata:</label>
-        <input id="item" name="item" required>
-        <label for="amount">Kuinka paljon:</label>
-        <input id="amount" name="amount" required type="number">
-        <label for="password">Pakastimen salasana:</label>
-        <input id="password" name="key" required>
-        <button type="submit">Submit</button>
-    </form>
+        <form hx-get="https://lumihanki.net/pakastin/change.php" hx-target="#pakastin-lista" class="post-it form">
+            <label for="name">Kuka olet:</label>
+            <input id="name" name="name" required>
+
+            <label for="index">Mitä tavaraa tahdot muokata:</label>
+            <input id="item" name="item" required>
+
+            <label for="amount">Kuinka paljon:</label>
+            <input id="amount" name="amount" required type="number">
+
+            <label for="password">Pakastimen salasana:</label>
+            <input id="password" name="key" required>
+
+            <button class="submit-button" type="submit">Submit</button>
+        </form>
+    </div>
 
 </body>
 
