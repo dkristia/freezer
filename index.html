@@ -42,15 +42,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('pakastin-lista').addEventListener('click', function (event) {
-                if (event.target.tagName === 'LI' && event.target.classList.contains('pakastin-item')) {
+                if (event.target.classList.contains('pakastin-item')) {
                     const item = event.target;
-                    const ownerElement = item.closest('ul').previousElementSibling;
-                    const owner = ownerElement ? ownerElement.textContent : '';
-                    const [amount, ...itemNameParts] = item.textContent.split('x');
-                    const itemName = itemNameParts.join('x').trim();
+                    const [owner, amount, itemName] = [item.getAttribute('owner'), item.getAttribute('amount'), item.getAttribute('item-name')];
 
                     document.getElementById('name').value = owner;
-                    document.getElementById('amount').value = amount.trim();
+                    document.getElementById('amount').value = amount;
                     document.getElementById('item').value = itemName;
                 }
             });

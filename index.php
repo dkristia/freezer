@@ -1,5 +1,6 @@
 <html>
-	<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css">
+
 </html>
 <?php
 header("Access-Control-Allow-Origin: *");
@@ -15,7 +16,7 @@ $owners = @pg_query($conn, "select distinct on (owner) owner from manifest order
 if (!$owners) {
 	echo "the query is fucked";
 	echo (pg_last_error($conn));
-  exit;
+	exit;
 }
 echo "<h3>Pakastimen sisällysluettelo</h3>";
 echo "<ul>";
@@ -25,7 +26,7 @@ while ($owner = pg_fetch_row($owners)) {
 	$ownerid = pg_escape_literal($owner[0]);
 	$belongings = @pg_query($conn, "select amount,item from manifest where owner=$ownerid order by amount desc;");
 	while ($stuff = pg_fetch_row($belongings)) {
-		echo "<li class='pakastin-item' amount='$stuff[0]' item-name='$stuff[1]'>$stuff[0]x $stuff[1]</li>";
+		echo "<li class='pakastin-item' owner='$owner[0]' amount='$stuff[0]' item-name='$stuff[1]'>$stuff[0]x $stuff[1]</li>";
 	}
 	echo "</ul></li>";
 }
