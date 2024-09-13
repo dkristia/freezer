@@ -21,7 +21,7 @@ if (!$owners) {
 echo "<h3>Pakastimen sisällysluettelo</h3>";
 echo "<ul>";
 while ($owner = pg_fetch_row($owners)) {
-	echo "<li><p class='owner'>$owner[0]</p><ul>";
+	echo "<li><p class='owner'>".htmlspecialchars($owner[0])."</p><ul>";
 	/** @psalm-suppress MixedAssignment */
 	$ownerid = pg_escape_literal($owner[0]);
 	$belongings = @pg_query($conn, "select amount,item from manifest where owner=$ownerid order by amount desc;");
