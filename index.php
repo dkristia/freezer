@@ -21,12 +21,12 @@ if (!$owners) {
 echo "<h3>Pakastimen sisällysluettelo</h3>";
 echo "<ul>";
 while ($owner = pg_fetch_row($owners)) {
-	echo "<li><p class='owner'>".htmlspecialchars($owner[0])."</p><ul>";
+	echo "<li><p class='owner'>$owner[0]</p><ul>";
 	/** @psalm-suppress MixedAssignment */
 	$ownerid = pg_escape_literal($owner[0]);
 	$belongings = @pg_query($conn, "select amount,item from manifest where owner=$ownerid order by amount desc;");
 	while ($stuff = pg_fetch_row($belongings)) {
-		echo "<li class='pakastin-item' owner='$owner[0]' amount='$stuff[0]' item-name='$stuff[1]'>$stuff[0]x $stuff[1]</li>";
+		echo "<li class='pakastin-item' owner='".htmlspecialchars($owner[0])."' amount='$stuff[0]' item-name='".htmlspecialchars($stuff[1])."'>$stuff[0]x $stuff[1]</li>";
 	}
 	echo "</ul></li>";
 }
